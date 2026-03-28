@@ -1,0 +1,76 @@
+<!--pages/import/import.wxml-->
+<view class="page">
+  <!-- 介绍步骤 -->
+  <view wx:if="{{step === 'intro'}}">
+    <view class="card">
+      <view class="section-title">Excel 导入说明</view>
+      <view class="guide-text">
+        <view class="guide-item">1. 支持 CSV 格式文件（Excel另存为CSV）</view>
+        <view class="guide-item">2. 第一行为表头，需包含"姓名"列</view>
+        <view class="guide-item">3. 支持的列名：</view>
+        <view class="guide-sub">• 姓名（必填）</view>
+        <view class="guide-sub">• 电话/手机</view>
+        <view class="guide-sub">• 年龄</view>
+        <view class="guide-sub">• 课时费（数字）</view>
+        <view class="guide-sub">• 项目（多个用顿号或逗号分隔）</view>
+        <view class="guide-sub">• 已购课时（数字）</view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">CSV 格式示例</view>
+      <view class="example-text">
+        <view>姓名,电话,年龄,课时费,项目,已购课时</view>
+        <view>张三,13800138000,12,400,专业课、乐理,20</view>
+        <view>李四,13900139000,15,450,陪练,15</view>
+      </view>
+    </view>
+
+    <view class="btn-area">
+      <button class="primary-btn" bindtap="onChooseFile" disabled="{{loading}}">
+        {{loading ? '解析中...' : '选择文件'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 预览步骤 -->
+  <view wx:if="{{step === 'preview'}}">
+    <view class="card">
+      <view class="section-title">预览数据（{{previewData.length}}条）</view>
+      <view class="file-name">文件：{{fileName}}</view>
+
+      <view class="preview-list">
+        <view class="preview-item" wx:for="{{previewData}}" wx:key="index">
+          <view class="preview-name">{{item.name}}</view>
+          <view class="preview-detail">
+            {{item.phone ? item.phone : ''}}
+            {{item.feePerLesson ? '¥' + item.feePerLesson + '/节' : ''}}
+            {{item.purchasedLessons ? item.purchasedLessons + '节' : ''}}
+          </view>
+          <view class="preview-projects" wx:if="{{item.projects.length > 0}}">
+            <view class="tag" wx:for="{{item.projects}}" wx:for-item="proj" wx:key="*this">{{proj}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="btn-area">
+      <button class="primary-btn" bindtap="onConfirmImport">确认导入</button>
+      <button class="secondary-btn" bindtap="onReimport" style="margin-top:16rpx">重新选择</button>
+    </view>
+  </view>
+
+  <!-- 完成步骤 -->
+  <view wx:if="{{step === 'done'}}">
+    <view class="card done-card">
+      <view class="done-icon">✅</view>
+      <view class="done-title">导入成功</view>
+      <view class="done-text">成功导入 {{importCount}} 名学生</view>
+    </view>
+
+    <view class="btn-area">
+      <button class="primary-btn" bindtap="onBack">返回首页</button>
+      <button class="secondary-btn" bindtap="onReimport" style="margin-top:16rpx">继续导入</button>
+    </view>
+  </view>
+</view>

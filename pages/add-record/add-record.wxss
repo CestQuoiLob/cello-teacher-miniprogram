@@ -1,0 +1,38 @@
+/* pages/add-record/add-record.wxss */
+.page {
+  padding: 20rpx 0 40rpx;
+}
+
+.picker-item {
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 2rpx solid #E0D5C0;
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  background-color: #FFFFFF;
+}
+
+.picker-item.placeholder {
+  color: #999999;
+}
+
+.capsule-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -8rpx;
+}
+
+.checkbox-row {
+  padding: 12rpx 0;
+}
+
+.checkbox-label {
+  font-size: 28rpx;
+  color: #333333;
+  margin-left: 8rpx;
+}
+
+.btn-area {
+  padding: 20rpx 24rpx;
+}

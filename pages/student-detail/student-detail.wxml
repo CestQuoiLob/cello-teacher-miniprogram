@@ -1,0 +1,146 @@
+<!--pages/student-detail/student-detail.wxml-->
+<view class="page" wx:if="{{student}}">
+  <!-- 学生信息卡片 -->
+  <view class="card info-card">
+    <view class="info-header">
+      <view class="student-name">{{student.name}}</view>
+      <view class="student-fee">¥{{student.feePerLesson}}/节</view>
+    </view>
+    <view class="info-row">
+      <text class="info-label">电话：</text>
+      <text class="info-value">{{student.phone || '未填写'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">年龄：</text>
+      <text class="info-value">{{student.age || '未填写'}}岁</text>
+    </view>
+    <view class="project-tags">
+      <view class="tag" wx:for="{{student.projects}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-row">
+    <view class="action-item" bindtap="onEditStudent">✏️ 编辑</view>
+    <view class="action-item" bindtap="onAddRecord">📝 添加记录</view>
+    <view class="action-item" bindtap="onCalendarView">📅 月历</view>
+  </view>
+
+  <!-- 课时统计 -->
+  <view class="card">
+    <view class="section-title">课时统计</view>
+    <view class="lesson-stats">
+      <view class="lesson-stat">
+        <view class="stat-num">{{student.purchasedLessons}}</view>
+        <view class="stat-text">已购</view>
+      </view>
+      <view class="lesson-stat" bindtap="onEditCompleted">
+        <view class="stat-num">{{student.completedLessons}}</view>
+        <view class="stat-text">已上 ✏️</view>
+      </view>
+      <view class="lesson-stat" bindtap="onEditRemaining">
+        <view class="stat-num {{student.remainingLessons < 5 ? 'low' : ''}}">{{student.remainingLessons}}</view>
+        <view class="stat-text">剩余 ✏️</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 上课时间 -->
+  <view class="card">
+    <view class="section-title">每周上课时间</view>
+    <view class="schedule-days">
+      <view class="day-label">{{scheduleDaysStr}}</view>
+    </view>
+  </view>
+
+  <!-- 上课记录 -->
+  <view class="card">
+    <view class="section-title">上课记录 ({{records.length}}节)</view>
+    
+    <block wx:if="{{records.length > 0}}">
+      <view class="record-list">
+        <view
+          class="record-item {{item.type === 'adjusted' ? 'adjusted' : ''}}"
+          wx:for="{{records}}"
+          wx:key="id"
+          data-index="{{index}}"
+          data-id="{{item.id}}"
+          catchtouchstart="onRecordTouchStart"
+          catchtouchmove="onRecordTouchMove"
+          catchtouchend="onRecordTouchEnd"
+        >
+          <view class="record-content" style="transform:translateX(-{{item.slideLeft || 0}}rpx);transition:{{item.sliding ? 'none' : 'transform 0.3s ease'}}">
+            <view class="record-left">
+              <view class="record-date">{{item.date}}</view>
+              <view class="record-time">{{item.time || '--:--'}} · {{item.durationStr}}</view>
+              <view class="record-project">
+                <view class="tag">{{item.project}}</view>
+                <view class="tag adjusted-tag" wx:if="{{item.type === 'adjusted'}}">调课</view>
+              </view>
+              <view class="record-notes" wx:if="{{item.notes}}">{{item.notes}}</view>
+            </view>
+          </view>
+          <view
+            class="delete-btn"
+            data-id="{{item.id}}"
+            catchtap="onDeleteRecord"
+            wx:if="{{item.slideLeft > 80}}"
+          >
+            删除
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <view class="empty-state" wx:else>
+      <view class="empty-text">暂无上课记录</view>
+    </view>
+  </view>
+
+  <!-- 总时长统计 -->
+  <view class="card">
+    <view class="section-title">总上课时长</view>
+    <view class="total-time">{{totalMinutesStr}}</view>
+  </view>
+
+  <!-- 删除学生按钮 -->
+  <view class="card">
+    <button class="danger-btn" bindtap="onDeleteStudent">删除此学生</button>
+  </view>
+
+  <!-- 已上课时编辑弹窗 -->
+  <view class="modal-mask" wx:if="{{showCompletedModal}}" bindtap="onCancelCompleted">
+    <view class="modal-content" catchtap="">
+      <view class="modal-title">编辑已上课时</view>
+      <input
+        class="form-input"
+        type="number"
+        value="{{editCompleted}}"
+        bindinput="onCompletedInput"
+        focus="{{showCompletedModal}}"
+      />
+      <view class="modal-buttons">
+        <view class="modal-btn cancel" bindtap="onCancelCompleted">取消</view>
+        <view class="modal-btn confirm" bindtap="onConfirmCompleted">确定</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 剩余课时编辑弹窗 -->
+  <view class="modal-mask" wx:if="{{showRemainingModal}}" bindtap="onCancelRemaining">
+    <view class="modal-content" catchtap="">
+      <view class="modal-title">编辑剩余课时</view>
+      <input
+        class="form-input"
+        type="number"
+        value="{{editRemaining}}"
+        bindinput="onRemainingInput"
+        focus="{{showRemainingModal}}"
+      />
+      <view class="modal-buttons">
+        <view class="modal-btn cancel" bindtap="onCancelRemaining">取消</view>
+        <view class="modal-btn confirm" bindtap="onConfirmRemaining">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

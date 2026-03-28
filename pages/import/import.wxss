@@ -1,0 +1,100 @@
+/* pages/import/import.wxss */
+.page {
+  padding: 20rpx 0 40rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.guide-text {
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 2;
+}
+
+.guide-item {
+  margin-bottom: 4rpx;
+}
+
+.guide-sub {
+  padding-left: 24rpx;
+  color: #999999;
+}
+
+.example-text {
+  font-size: 24rpx;
+  color: #8B6914;
+  background-color: #F5F0E8;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  font-family: monospace;
+  line-height: 1.8;
+}
+
+.file-name {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 16rpx;
+}
+
+.preview-list {
+  max-height: 600rpx;
+  overflow-y: auto;
+}
+
+.preview-item {
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #F0ECE4;
+}
+
+.preview-item:last-child {
+  border-bottom: none;
+}
+
+.preview-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.preview-detail {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 4rpx;
+}
+
+.preview-projects {
+  margin-top: 8rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.done-card {
+  text-align: center;
+  padding: 60rpx 40rpx;
+}
+
+.done-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.done-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #27AE60;
+  margin-bottom: 8rpx;
+}
+
+.done-text {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.btn-area {
+  padding: 20rpx 24rpx;
+}

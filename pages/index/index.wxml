@@ -1,0 +1,75 @@
+<!--pages/index/index.wxml-->
+<view class="page">
+  <!-- 统计卡片 -->
+  <view class="stats-row">
+    <view class="stat-card">
+      <view class="stat-value">{{stats.totalStudents}}</view>
+      <view class="stat-label">学生总数</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-value">{{stats.totalLessons}}</view>
+      <view class="stat-label">本月课时</view>
+    </view>
+    <view class="stat-card">
+      <view class="stat-value">¥{{stats.totalIncome}}</view>
+      <view class="stat-label">本月收入</view>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
+    <view class="quick-btn" bindtap="onImport">
+      <text class="quick-icon">📥</text>
+      <text class="quick-text">批量导入</text>
+    </view>
+    <view class="quick-btn" bindtap="onCalendarView">
+      <text class="quick-icon">📅</text>
+      <text class="quick-text">月历视图</text>
+    </view>
+  </view>
+
+  <!-- 学生列表 -->
+  <view class="section-header">
+    <text class="section-title">学生列表</text>
+    <text class="section-count">{{students.length}}人</text>
+  </view>
+  
+  <block wx:if="{{students.length > 0}}">
+    <view
+      class="student-card card"
+      wx:for="{{students}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="onStudentTap"
+    >
+      <view class="student-header">
+        <view class="student-name">{{item.name}}</view>
+        <view class="student-fee">¥{{item.feePerLesson}}/节</view>
+      </view>
+      <view class="student-tags">
+        <view class="tag" wx:for="{{item.projects}}" wx:for-item="proj" wx:key="*this">{{proj}}</view>
+      </view>
+      <view class="student-footer">
+        <view class="student-schedule">
+          <text class="label">上课日：</text>
+          <text class="value">{{item.scheduleDaysStr || '未设置'}}</text>
+        </view>
+        <view class="student-remaining" wx:if="{{item.remainingLessons > 0}}">
+          剩余 <text class="num {{item.remainingLessons < 5 ? 'low' : ''}}">{{item.remainingLessons}}</text> 节
+        </view>
+        <view class="student-remaining exhausted" wx:elif="{{item.remainingLessons <= 0}}">
+          <text class="exhausted-text">⚠️ 课时用尽</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="empty-state" wx:else>
+    <view class="empty-icon">🎻</view>
+    <view class="empty-text">还没有学生</view>
+    <view class="empty-hint">点击右下角 + 添加，或批量导入</view>
+  </view>
+
+  <!-- 浮动添加按钮 -->
+  <button class="fab" bindtap="onAddStudent">+</button>
+</view>

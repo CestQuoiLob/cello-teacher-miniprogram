@@ -1,0 +1,290 @@
+/* 全局样式 */
+page {
+  background-color: #F5F0E8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: #333333;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* 通用卡片样式 */
+.card {
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 28rpx;
+  margin: 20rpx 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(139, 105, 20, 0.08);
+}
+
+/* 胶囊按钮 */
+.capsule-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12rpx 28rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  border: 2rpx solid #8B6914;
+  color: #8B6914;
+  background-color: transparent;
+  margin: 8rpx;
+}
+
+.capsule-btn.active {
+  background-color: #8B6914;
+  color: #FFFFFF;
+}
+
+.capsule-btn::after {
+  border: none;
+}
+
+/* 标签 */
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  margin: 4rpx;
+  background-color: rgba(139, 105, 20, 0.1);
+  color: #8B6914;
+}
+
+/* 主按钮 */
+.primary-btn {
+  background-color: #8B6914;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+  font-size: 30rpx;
+  text-align: center;
+  width: 100%;
+}
+
+.primary-btn::after {
+  border: none;
+}
+
+/* 危险按钮 */
+.danger-btn {
+  background-color: #E74C3C;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+  font-size: 30rpx;
+  text-align: center;
+  width: 100%;
+}
+
+.danger-btn::after {
+  border: none;
+}
+
+/* 次要按钮 */
+.secondary-btn {
+  background-color: transparent;
+  color: #8B6914;
+  border: 2rpx solid #8B6914;
+  border-radius: 12rpx;
+  padding: 18rpx 0;
+  font-size: 30rpx;
+  text-align: center;
+  width: 100%;
+}
+
+.secondary-btn::after {
+  border: none;
+}
+
+/* 浮动按钮 */
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #8B6914;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  box-shadow: 0 6rpx 20rpx rgba(139, 105, 20, 0.35);
+  z-index: 100;
+}
+
+.fab::after {
+  border: none;
+}
+
+/* 表单样式 */
+.form-group {
+  margin-bottom: 32rpx;
+}
+
+.form-label {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 12rpx;
+  display: block;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  border: 2rpx solid #E0D5C0;
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+
+.form-input:focus {
+  border-color: #8B6914;
+}
+
+.form-textarea {
+  width: 100%;
+  min-height: 160rpx;
+  border: 2rpx solid #E0D5C0;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+
+/* 统计卡片 */
+.stat-card {
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  text-align: center;
+  flex: 1;
+  margin: 0 8rpx;
+  box-shadow: 0 2rpx 12rpx rgba(139, 105, 20, 0.08);
+}
+
+.stat-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #8B6914;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #999999;
+  margin-top: 4rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 80rpx 40rpx;
+  color: #999999;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+}
+
+/* 列表项 */
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #F0ECE4;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+/* 删除按钮 */
+.delete-btn {
+  background-color: #E74C3C;
+  color: #FFFFFF;
+  padding: 0 30rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+}
+
+/* 遮罩层 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  width: 80%;
+  max-width: 600rpx;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.modal-text {
+  font-size: 28rpx;
+  color: #666666;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-btn {
+  flex: 1;
+  margin: 0 10rpx;
+  padding: 16rpx 0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.modal-btn.cancel {
+  background-color: #F0ECE4;
+  color: #666666;
+}
+
+.modal-btn.confirm {
+  background-color: #8B6914;
+  color: #FFFFFF;
+}
+
+/* 调整课标记 */
+.adjusted-tag {
+  background-color: #FFF3CD;
+  color: #856404;
+  border: 1rpx solid #FFE69C;
+}

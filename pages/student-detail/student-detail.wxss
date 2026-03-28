@@ -1,0 +1,293 @@
+/* pages/student-detail/student-detail.wxss */
+.page {
+  padding-bottom: 40rpx;
+}
+
+.info-card .info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.info-card .student-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.info-card .student-fee {
+  font-size: 30rpx;
+  color: #8B6914;
+  font-weight: bold;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 8rpx;
+  font-size: 26rpx;
+}
+
+.info-label {
+  color: #999999;
+  width: 100rpx;
+}
+
+.info-value {
+  color: #333333;
+}
+
+.project-tags {
+  margin-top: 12rpx;
+}
+
+.action-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 16rpx 24rpx;
+  background-color: #FFFFFF;
+  margin: 0 24rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(139, 105, 20, 0.08);
+}
+
+.action-item {
+  font-size: 26rpx;
+  color: #8B6914;
+  padding: 12rpx 20rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.lesson-stats {
+  display: flex;
+  justify-content: space-around;
+}
+
+.lesson-stat {
+  text-align: center;
+}
+
+.lesson-stat .stat-num {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #8B6914;
+}
+
+.lesson-stat .stat-num.low {
+  color: #E74C3C;
+}
+
+.lesson-stat .stat-text {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 4rpx;
+}
+
+.schedule-days {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.day-label {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.record-list {
+  margin-top: 8rpx;
+}
+
+.record-item {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1rpx solid #F0ECE4;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-item.adjusted .record-content {
+  background-color: #FFFBF0;
+}
+
+.record-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 20rpx;
+  background-color: #FFFFFF;
+  position: relative;
+  z-index: 1;
+}
+
+.record-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.record-date {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+}
+
+.record-time {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 4rpx;
+}
+
+.record-project {
+  margin-top: 8rpx;
+  display: flex;
+  gap: 8rpx;
+}
+
+.record-notes {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 8rpx;
+}
+
+.total-time {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #8B6914;
+  text-align: center;
+  padding: 16rpx 0;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  font-size: 22rpx;
+  color: #8B6914;
+  background: #f5f0e8;
+  border-radius: 8rpx;
+  margin-right: 8rpx;
+}
+
+.adjusted-tag {
+  color: #e67e22;
+  background: #fef5e7;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150rpx;
+  background: #E74C3C;
+  color: #fff;
+  font-size: 28rpx;
+  z-index: 0;
+}
+
+.empty-state {
+  padding: 40rpx 0;
+  text-align: center;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #ccc;
+}
+
+.danger-btn {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #E74C3C;
+  background: #fff;
+  border: 2rpx solid #E74C3C;
+  border-radius: 12rpx;
+}
+
+.danger-btn::after {
+  border: none;
+}
+
+/* 弹窗样式 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 600rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.modal-content .form-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 20rpx;
+  font-size: 32rpx;
+  text-align: center;
+  border: 2rpx solid #e0d6c8;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+}
+
+.modal-btn.cancel {
+  color: #666;
+  background: #f5f0e8;
+}
+
+.modal-btn.confirm {
+  color: #fff;
+  background: #8B6914;
+}
+
+.card {
+  margin: 20rpx 24rpx;
+  padding: 28rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(139, 105, 20, 0.08);
+}

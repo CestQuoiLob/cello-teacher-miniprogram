@@ -1,0 +1,55 @@
+/* pages/settings/settings.wxss */
+.page {
+  padding: 20rpx 0;
+}
+
+.settings-group {
+  background-color: #FFFFFF;
+  margin: 20rpx 24rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 12rpx rgba(139, 105, 20, 0.08);
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid #F0ECE4;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-item.danger .item-text {
+  color: #E74C3C;
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+}
+
+.item-icon {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+}
+
+.item-text {
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.item-arrow {
+  font-size: 36rpx;
+  color: #CCCCCC;
+}
+
+.version-info {
+  text-align: center;
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 40rpx;
+}

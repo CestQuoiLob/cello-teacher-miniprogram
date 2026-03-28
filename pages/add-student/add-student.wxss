@@ -1,0 +1,96 @@
+/* pages/add-student/add-student.wxss */
+.page {
+  padding: 20rpx 0 40rpx;
+}
+
+.card {
+  margin: 0 24rpx 20rpx;
+  padding: 28rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0,0,0,0.06);
+}
+
+.form-group {
+  margin-bottom: 32rpx;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  border: 2rpx solid #e0d6c8;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  background: #faf8f5;
+}
+
+.form-input:focus {
+  border-color: #8B6914;
+}
+
+.form-textarea {
+  width: 100%;
+  min-height: 160rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  border: 2rpx solid #e0d6c8;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  background: #faf8f5;
+}
+
+.capsule-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.capsule-btn {
+  padding: 12rpx 28rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #f5f0e8;
+  border: 2rpx solid #e0d6c8;
+  border-radius: 40rpx;
+  transition: all 0.2s;
+}
+
+.capsule-btn.active {
+  color: #fff;
+  background: #8B6914;
+  border-color: #8B6914;
+}
+
+.btn-area {
+  padding: 20rpx 24rpx;
+}
+
+.primary-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #fff;
+  background: #8B6914;
+  border-radius: 44rpx;
+  border: none;
+}
+
+.primary-btn::after {
+  border: none;
+}

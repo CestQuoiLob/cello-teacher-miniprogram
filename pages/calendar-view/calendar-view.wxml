@@ -1,0 +1,69 @@
+<!--pages/calendar-view/calendar-view.wxml-->
+<view class="page">
+  <!-- 月份切换 -->
+  <view class="month-nav">
+    <view class="nav-arrow" bindtap="onPrevMonth">◀</view>
+    <view class="month-label">{{monthLabel}}</view>
+    <view class="nav-arrow" bindtap="onNextMonth">▶</view>
+  </view>
+
+  <!-- 项目筛选 -->
+  <view class="filter-bar">
+    <picker mode="selector" range="{{projectOptions}}" value="{{projectIndex}}" bindchange="onProjectFilter">
+      <view class="filter-btn">筛选：{{projectOptions[projectIndex]}} ▾</view>
+    </picker>
+  </view>
+
+  <!-- 月历网格 -->
+  <view class="calendar card">
+    <!-- 星期头 -->
+    <view class="week-header">
+      <view class="week-cell" wx:for="{{weekHeaders}}" wx:key="*this">{{item}}</view>
+    </view>
+    <!-- 日期格 -->
+    <view class="calendar-grid">
+      <view
+        class="day-cell {{item.hasRecords ? 'has-record' : ''}} {{item.date === selectedDate ? 'selected' : ''}} {{!item.day ? 'empty' : ''}}"
+        wx:for="{{calendarDays}}"
+        wx:key="date"
+        data-date="{{item.date}}"
+        bindtap="onDayTap"
+      >
+        <view class="day-num" wx:if="{{item.day}}">{{item.day}}</view>
+        <view class="day-dot" wx:if="{{item.hasRecords}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 选中日期的记录 -->
+  <view class="records-section" wx:if="{{selectedDate}}">
+    <view class="section-title">{{selectedDate}} 上课记录</view>
+
+    <block wx:if="{{pagedRecords.length > 0}}">
+      <view
+        class="record-card card {{item.type === 'adjusted' ? 'adjusted' : ''}}"
+        wx:for="{{pagedRecords}}"
+        wx:key="id"
+      >
+        <view class="record-time">{{item.time || '--:--'}} · {{item.durationStr}}</view>
+        <view class="record-project">
+          <view class="tag">{{item.project}}</view>
+          <view class="tag adjusted-tag" wx:if="{{item.type === 'adjusted'}}">调课</view>
+        </view>
+        <view class="record-student" wx:if="{{!studentId}}">{{item.studentName || ''}}</view>
+        <view class="record-notes" wx:if="{{item.notes}}">{{item.notes}}</view>
+      </view>
+
+      <!-- 分页 -->
+      <view class="pagination" wx:if="{{totalPages > 1}}">
+        <view class="page-btn {{currentPage === 0 ? 'disabled' : ''}}" bindtap="onPrevPage">上一页</view>
+        <view class="page-info">{{currentPage + 1}} / {{totalPages}}</view>
+        <view class="page-btn {{currentPage >= totalPages - 1 ? 'disabled' : ''}}" bindtap="onNextPage">下一页</view>
+      </view>
+    </block>
+
+    <view class="empty-state" wx:else>
+      <view class="empty-text">该日期无上课记录</view>
+    </view>
+  </view>
+</view>
